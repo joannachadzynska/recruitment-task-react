@@ -1,9 +1,8 @@
+import "./Factorial.style.scss";
 interface FactorialPageProps {}
 
-import "./Factorial.styles.scss";
-
-const FactorialPage: React.FC<FactorialPageProps> = () => {
+const Factorial: React.FC<FactorialPageProps> = () => {
     return <div>FactorialPage</div>;
 };
 
-export default FactorialPage;
+export default Factorial;
