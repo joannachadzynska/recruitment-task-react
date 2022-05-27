@@ -1,9 +1,9 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import { githubUsersApi } from "./../store/github";
+import { githubUsersReducer } from "../store/reducers/githubUsersReducer";
 
 export const store = configureStore({
     reducer: {
-        githubUsersApi: githubUsersApi.reducer,
+        github: githubUsersReducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
