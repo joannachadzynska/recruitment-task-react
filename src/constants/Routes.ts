@@ -3,5 +3,5 @@ export enum Routes {
     Github = "/github",
     About = "/about",
     Factorial = "/factorial",
-    Login = "/login",
+    GithubUser = "/user",
 }
