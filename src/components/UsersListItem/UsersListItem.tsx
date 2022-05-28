@@ -3,7 +3,7 @@ import { User } from "../../models/user.model";
 import { Routes as ROUTES } from "../../constants/Routes";
 import "./UsersListItem.style.scss";
 
-const UsersListItem: React.FC<User> = ({ login, avatar_url, type }) => {
+const UsersListItem: React.FC<User> = ({ login, avatar_url }) => {
     return (
         <li>
             <Link to={`${ROUTES.GithubUser}/${login}`}>

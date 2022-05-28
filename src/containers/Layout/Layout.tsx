@@ -1,4 +1,4 @@
-import { Footer, Navigation } from "../../components";
+import { Navigation } from "../../components";
 import "./Layout.style.scss";
 interface LayoutProps {
     children: React.ReactNode;
@@ -9,7 +9,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <>
             <Navigation />
             <main className='wrapper'>{children}</main>
-            {/* <Footer /> */}
         </>
     );
 };

@@ -4,9 +4,7 @@ import { Form, Input } from "../../components";
 import { searchUsers } from "../../store/action-creators/githubUsers.actions";
 import "./SearchUserForm.style.scss";
 
-interface SearchUserFormProps {}
-
-const SearchUserForm: React.FC<SearchUserFormProps> = () => {
+const SearchUserForm: React.FC = () => {
     const dispatch = useAppDispatch();
     const [searchTerm, setSearchTerm] = useState("");
     const [error, setError] = useState("");

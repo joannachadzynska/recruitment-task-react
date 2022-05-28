@@ -3,7 +3,6 @@ import { ReactComponent as CompanyIcon } from "../../../assets/icons/icon-compan
 import { ReactComponent as TwitterIcon } from "../../../assets/icons/icon-twitter.svg";
 import { ReactComponent as WebsiteIcon } from "../../../assets/icons/icon-website.svg";
 import { UserDetails } from "../../../models/user.model";
-import { Link } from "react-router-dom";
 
 const CardFooter: React.FC<UserDetails> = ({
     location,
