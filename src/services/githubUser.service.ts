@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from "axios";
 import { config } from "../config/config";
 import { Commit } from "../models/commit.model";
 import { Repository } from "../models/repo.model";
-import { User, UserSearchResponse } from "../models/user.model";
+import { User, UserDetails, UserSearchResponse } from "../models/user.model";
 
 export class GithubUserService {
     private readonly request: AxiosInstance;
@@ -10,7 +10,10 @@ export class GithubUserService {
     public constructor() {
         this.request = axios.create({
             baseURL: config.baseUrl,
-            headers: {},
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${process.env.REACT_APP_GITHUB_ACCESS_TOKEN}`,
+            },
             withCredentials: false,
             validateStatus: () => true,
         });
@@ -31,7 +34,9 @@ export class GithubUserService {
         }
     }
 
-    public async getUserByLoginName(login: string): Promise<User | null> {
+    public async getUserByLoginName(
+        login: string
+    ): Promise<UserDetails | null> {
         try {
             const response = (await this.request.get(`/users/${login}`)).data;
             return response;
@@ -44,7 +49,7 @@ export class GithubUserService {
         try {
             const response = (
                 await this.request.get(
-                    `/users/${login}/repos?sort=updated&order=desc`
+                    `/users/${login}/repos?sort=updated&order=desc&per_page=5`
                 )
             ).data;
             return response;
@@ -59,7 +64,9 @@ export class GithubUserService {
     ): Promise<Commit[] | []> {
         try {
             const response = (
-                await this.request.get(`/repos/${login}/${repo}/commits`)
+                await this.request.get(
+                    `/repos/${login}/${repo}/commits?per_page=5`
+                )
             ).data;
             return response;
         } catch (error) {
