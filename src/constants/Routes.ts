@@ -1,6 +1,5 @@
 export enum Routes {
-    Home = "/",
-    Github = "/github",
+    Github = "/",
     About = "/about",
     Factorial = "/factorial",
     GithubUser = "/user",
