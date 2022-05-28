@@ -1,8 +1,11 @@
+@use "../abstracts" as *;
+
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: $font-primary;
     line-height: 1.6;
     min-height: 100vh;
     overflow-x: hidden;
+    background-color: #f8f9ff;
 }
 
 a {
