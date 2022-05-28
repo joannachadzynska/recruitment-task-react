@@ -4,17 +4,19 @@ import "./About.style.scss";
 import authorAvatar from "../../assets/images/jc.png";
 import { ReactComponent as LinkedinIcon } from "../../assets/icons/icon-linkedin.svg";
 import { ReactComponent as GithubIcon } from "../../assets/icons/icon-github.svg";
+
 const About: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const toggleModal = () => setIsModalOpen(!isModalOpen);
+
     return (
-        <div>
-            <h2>Wymagania dotyczące aplikacji</h2>
-            <p>
+        <div className='about-app'>
+            <h2 className='about-app__title'>Wymagania dotyczące aplikacji</h2>
+            <p className='about-app__description'>
                 Napisz aplikację korzystając z najnowszego api react.js (hooki,
-                Context, itd.) spełniającą poniższe założenia.{" "}
+                Context, itd.) spełniającą poniższe założenia.
             </p>
-            <div>
+            <div className='about-app__requirement'>
                 Aplikacja ma się składać z minimum 3 ekranów:
                 <ol>
                     <li>Wyszukiwarka projektów githubowych</li>
@@ -22,7 +24,7 @@ const About: React.FC = () => {
                     <li>Wyliczanie silni</li>
                 </ol>
             </div>
-            <div>
+            <div className='about-app__requirement'>
                 Ad 1:
                 <ul>
                     <li>Wykorzystane jest publiczne API Githuba</li>
@@ -45,7 +47,7 @@ const About: React.FC = () => {
                     </li>
                 </ul>
             </div>
-            <div>
+            <div className='about-app__requirement'>
                 Ad 2:
                 <ul>
                     <li>
@@ -68,24 +70,27 @@ const About: React.FC = () => {
                     <li>historia poprzednich wyliczeń</li>
                 </ul>
             </div>
-            <div>
+            <div className='about-app__requirement'>
                 Ogólne:
                 <ul>
                     <li>
-                        korzysta z LESS / SASS. Spełnia wymogi BEM. Jest też
-                        estetyczna;
+                        korzysta z <strong>LESS / SASS</strong>. Spełnia wymogi{" "}
+                        <strong>BEM</strong>. Jest też{" "}
+                        <strong>estetyczna</strong>
                     </li>
                     <li>
                         wyświetla co drugi element każdej listy wyróżnionym
                         kolorem
                     </li>
                     <li>
-                        jest hostowana (github pages, heroku, itd..), a jej kod
-                        jest dostępny publicznie
+                        jest <strong>hostowana</strong> (github pages, heroku,
+                        itd..), a jej kod jest dostępny publicznie
                     </li>
                 </ul>
             </div>
-            <p>Miło widziane użycie middlewarów reduxowych.</p>
+            <div className='about-app__requirement'>
+                Miło widziane użycie <strong>middlewarów reduxowych</strong>.
+            </div>
 
             <button className='about-me-btn' onClick={toggleModal}>
                 O Autorze

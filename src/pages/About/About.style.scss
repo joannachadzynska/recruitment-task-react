@@ -1,8 +1,32 @@
 @use "../../styles/abstracts" as *;
 
+.about-app {
+    ol li,
+    ul li {
+        padding-left: 1rem;
+        margin-left: 2rem;
+    }
+    ul li {
+        list-style-type: "👍";
+
+        ul li {
+            list-style-type: "👉";
+        }
+    }
+
+    ol li {
+        list-style-type: decimal;
+    }
+
+    &__requirement,
+    &__description {
+        margin: 1rem auto;
+    }
+}
+
 .about-me-btn {
     @include ctaButton;
-    margin: 0;
+    margin: 1rem 0;
 }
 
 .author {
