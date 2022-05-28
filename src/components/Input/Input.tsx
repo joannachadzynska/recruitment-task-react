@@ -1,49 +1,39 @@
+import "./Input.style.scss";
 interface InputProps {
     id: string;
-    label?: string;
     placeholder?: string;
     error?: string;
-    value: string | number;
+    value?: string | number;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     type: "text" | "search" | "number";
-    inputMode:
-        | "text"
-        | "search"
-        | "email"
-        | "tel"
-        | "url"
-        | "none"
-        | "numeric"
-        | "decimal"
-        | undefined;
+    min?: string;
+    max?: string;
 }
 
 const Input: React.FC<InputProps> = ({
     id,
-    label,
     placeholder,
     error,
     onChange,
     value,
+    min,
+    max,
     ...rest
 }) => {
     return (
-        <div className='input-container'>
-            <label className='input-container__label' htmlFor={id}>
-                {label}
-            </label>
+        <div className='input'>
             <input
-                className='input-container__input'
+                className='input__input-field'
                 {...rest}
-                type='text'
-                autoComplete='off'
+                id={id}
+                min={min}
+                max={max}
                 value={value}
-                inputMode='text'
                 aria-invalid={!!error}
                 onChange={onChange}
-                placeholder={placeholder}
+                placeholder={`${placeholder}...`}
             />
-            {error && <div className='input-container__error'>{error}</div>}
+            {error && <div className='input__error'>{error}</div>}
         </div>
     );
 };

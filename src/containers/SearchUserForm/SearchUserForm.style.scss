@@ -1,0 +1,19 @@
+@use "../../styles/abstracts" as *;
+
+form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    input[type="search"] {
+        background: transparent url(/assets/icons/icon-search.svg) no-repeat
+            center right;
+        background-repeat: no-repeat;
+        background-position: 13px center;
+        padding-left: calc(1.2em + 2.5vw);
+    }
+
+    .search-btn {
+        @include ctaButton;
+    }
+}

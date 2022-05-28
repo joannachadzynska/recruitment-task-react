@@ -1,3 +1,5 @@
+import "./Form.style.scss";
+
 interface FormProps {
     children: React.ReactNode;
     onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;

@@ -5,3 +5,4 @@ export { Form } from "./Form";
 export { UsersList } from "./UsersList";
 export { Button } from "./Button";
 export { Loader } from "./Loader";
+export { Modal } from "./Modal";

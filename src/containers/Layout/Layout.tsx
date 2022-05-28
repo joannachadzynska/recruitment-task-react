@@ -8,8 +8,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <>
             <Navigation />
-            <main>{children}</main>
-            <Footer />
+            <main className='wrapper'>{children}</main>
+            {/* <Footer /> */}
         </>
     );
 };

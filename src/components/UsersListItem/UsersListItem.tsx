@@ -13,7 +13,9 @@ const UsersListItem: React.FC<User> = ({ login, avatar_url, type }) => {
                     </div>
                     <div className='user__info'>
                         <span className='user__info__name'>{login}</span>
-                        <span className='user__info__type'>Typ: {type}</span>
+                        <span className='user__info__see-more-details'>
+                            Zobacz więcej szczegołów
+                        </span>
                     </div>
                 </div>
             </Link>

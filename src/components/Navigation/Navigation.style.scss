@@ -1,0 +1,26 @@
+@use "../../styles/abstracts" as *;
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding-block: 1rem;
+    @include layeredShadow;
+
+    nav {
+        display: flex;
+        gap: 1.3rem;
+        align-items: center;
+        justify-content: flex-end;
+
+        a {
+            color: $color-secondary-very-dark;
+            font-weight: 500;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: $color-primary-dark;
+            }
+        }
+    }
+}

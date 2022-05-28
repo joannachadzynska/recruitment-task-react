@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { useAppDispatch } from "../../app/hooks";
 import { Form, Input } from "../../components";
 import { searchUsers } from "../../store/action-creators/githubUsers.actions";
-import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
+import "./SearchUserForm.style.scss";
 
 interface SearchUserFormProps {}
 
@@ -28,23 +28,20 @@ const SearchUserForm: React.FC<SearchUserFormProps> = () => {
     };
 
     return (
-        <div className='search-form'>
-            <Form onSubmit={handleSubmit}>
-                <Input
-                    id='search'
-                    type='search'
-                    inputMode='text'
-                    value={searchTerm}
-                    error={error}
-                    placeholder='Wyszukaj użytkownika'
-                    onChange={handleChange}
-                />
+        <Form onSubmit={handleSubmit}>
+            <Input
+                id='search'
+                type='search'
+                value={searchTerm}
+                error={error}
+                placeholder='Wyszukaj użytkownika'
+                onChange={handleChange}
+            />
 
-                <button type='submit' className='search-form__button'>
-                    <SearchIcon style={{ width: 50, height: 50 }} />
-                </button>
-            </Form>
-        </div>
+            <button type='submit' className='search-btn'>
+                Szukaj
+            </button>
+        </Form>
     );
 };
 
