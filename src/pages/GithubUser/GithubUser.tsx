@@ -1,11 +1,31 @@
 import "./GithubUser.style.scss";
-interface GithubUserProps {}
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useAppDispatch } from "../../app/hooks";
+import {
+    getUserByLoginName,
+    getUsersRepos,
+} from "./../../store/action-creators/githubUsers.actions";
 
-const GithubUser: React.FC<GithubUserProps> = () => {
+import UserCard from "./UserCard";
+import UserRepos from "./UserRepos";
+
+const GithubUser: React.FC = () => {
+    const { login } = useParams();
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        if (login) {
+            dispatch(getUserByLoginName(login));
+            dispatch(getUsersRepos(login));
+        }
+    }, [login]);
+
     return (
-        <div>
-            <h1>Github user</h1>
-        </div>
+        <>
+            <UserCard />
+            <UserRepos />
+        </>
     );
 };
 

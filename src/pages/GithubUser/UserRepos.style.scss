@@ -1,0 +1,11 @@
+@use "../../styles/abstracts" as *;
+
+.user-repos {
+    margin-block: 2rem;
+
+    h2 {
+        font-size: clamp(1rem, 5vw, 1.5rem);
+        font-weight: 700;
+        margin-block: 1rem;
+    }
+}

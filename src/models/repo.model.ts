@@ -1,11 +1,14 @@
 export interface Repository {
-    id: number;
-    name: string;
-    private: boolean;
     description: string;
-    commits_url: string;
-    url: string;
+    id: number;
+    forks_count: number;
+    full_name: string;
     created_at: string;
+    name: string;
     updated_at: string;
-    pushed_at: string;
+    private: boolean;
+    stargazers_count: number;
+    url: string;
+    visibility: boolean;
+    watchers: number;
 }

@@ -1,0 +1,39 @@
+@use "../../styles/abstracts" as *;
+
+.about-me-btn {
+    @include ctaButton;
+    margin: 0;
+}
+
+.author {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+
+    &__avatar {
+        @include avatarRound(40%);
+    }
+
+    &__name {
+        font-weight: 500;
+        font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    }
+
+    &__links {
+        display: flex;
+        align-items: center;
+
+        .link {
+            svg {
+                width: 40%;
+                height: 40%;
+            }
+        }
+
+        .link .linkedin path {
+            fill: $color-primary-dark;
+        }
+    }
+}

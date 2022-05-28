@@ -4,15 +4,13 @@ import "./GithubUserSearch.style.scss";
 import { SearchUserForm } from "./../../containers";
 import { Loader, UsersList } from "../../components";
 
-interface GithubProps {}
-
-const GithubUserSearch: React.FC<GithubProps> = () => {
+const GithubUserSearch: React.FC = () => {
     const { users, loading, error } = useAppSelector(
         (state: RootState) => state.github
     );
 
     return (
-        <div className='user-search'>
+        <div className='user-search-container'>
             <SearchUserForm />
             {loading && <Loader />}
             {!!users ? (
