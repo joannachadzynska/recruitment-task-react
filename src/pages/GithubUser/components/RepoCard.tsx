@@ -1,34 +1,51 @@
-import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { Repository } from "../../../models/repo.model";
-import { useEffect } from "react";
-import { getCommits } from "./../../../store/action-creators/githubUsers.actions";
+import { useAppSelector } from "../../../app/hooks";
 import { RootState } from "../../../app/store";
+import { ReposWithCommits } from "../../../store/reducers/githubUsersReducer";
 
-interface RepoCardProps extends Repository {
-    userLogin: string | undefined;
-}
-
-const RepoCard: React.FC<RepoCardProps> = ({ userLogin, full_name, name }) => {
-    const dispatch = useAppDispatch();
-    const commits = useAppSelector((state: RootState) => state.github.commits);
-    useEffect(() => {
-        if (!!userLogin) {
-            dispatch(getCommits(userLogin, name));
-        }
-    }, [userLogin, name]);
+const RepoCard: React.FC<ReposWithCommits> = ({
+    name,
+    commits,
+    description,
+    created_at,
+    updated_at,
+}) => {
+    const createdDate = new Intl.DateTimeFormat("pl-PL").format(
+        new Date(created_at)
+    );
+    const updatedDate = new Intl.DateTimeFormat("pl-PL").format(
+        new Date(updated_at)
+    );
     return (
-        <div>
-            <details>
-                <summary>{full_name}</summary>
+        <details className='repo-card'>
+            <summary className='repo-card__details'>
+                <span className='repo-card__details-title'>{name}</span>
+            </summary>
 
-                <ul>
-                    {!!commits &&
-                        commits.map((commit) => (
+            <ul className='repo-card__commits'>
+                <p>
+                    Opis:{" "}
+                    <span>{description ? description : "brak danych"}</span>
+                </p>
+                <p>
+                    Data utworzenia:{" "}
+                    <span>{createdDate ? createdDate : "brak danych"}</span>
+                </p>
+                <p>
+                    Data ostatniej aktualizacji:{" "}
+                    <span>{updatedDate ? updatedDate : "brak danych"}</span>
+                </p>
+                <p>Lista ostatnich commitów:</p>
+                {!!commits && commits.length > 0 ? (
+                    commits
+                        .splice(0, 5)
+                        .map((commit) => (
                             <li key={commit.sha}>{commit.commit.message}</li>
-                        ))}
-                </ul>
-            </details>
-        </div>
+                        ))
+                ) : (
+                    <p>Brak commitów do wyświetlenia</p>
+                )}
+            </ul>
+        </details>
     );
 };
 
