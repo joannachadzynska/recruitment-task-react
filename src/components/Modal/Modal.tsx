@@ -14,7 +14,7 @@ const Modal: React.FC<ModalProps> = ({ children, isOpen, handleClose }) => {
     const ref = React.useRef(null);
     useOnClickOutside(ref, handleClose);
     if (!isOpen) return null;
-    console.log(document.documentElement.scrollHeight);
+
     return createPortal(
         <div className='modal-overlay'>
             <div className='modal' ref={ref}>
