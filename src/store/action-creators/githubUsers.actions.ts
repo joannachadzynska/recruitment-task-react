@@ -13,9 +13,6 @@ export enum GithubUsersActions {
     GET_USER_REPOS = "GET_USER_REPOS",
     GET_USER_REPOS_SUCCESS = "GET_USER_REPOS_SUCCESS",
     GET_USER_REPOS_FAILURE = "GET_USER_REPOS_FAILURE",
-    GET_COMMITS = "GET_COMMITS",
-    GET_COMMITS_SUCCESS = "GET_COMMITS_SUCCESS",
-    GET_COMMITS_FAILURE = "GET_COMMITS_FAILURE",
     SET_CURRENT_PAGE = "SET_CURRENT_PAGE",
     SET_SEARCH_TERM = "SET_SEARCH_TERM",
     CLEAR_USER_STATE = "CLEAR_USER_STATE",
@@ -74,30 +71,30 @@ export const getUsersRepos =
         dispatch({ type: GithubUsersActions.GET_USER_REPOS });
         try {
             const data = await githubUsersService.getUserRepos(login);
+
+            const dataWithCommits = data.map(async (repo) => {
+                const commits = await githubUsersService.getCommits(
+                    login,
+                    repo.name
+                );
+
+                const repository = {
+                    ...repo,
+                    commits: commits,
+                };
+
+                return repository;
+            });
+
+            const repos = await Promise.all(dataWithCommits);
+
             dispatch({
                 type: GithubUsersActions.GET_USER_REPOS_SUCCESS,
-                payload: data,
+                payload: repos,
             });
         } catch (error) {
             dispatch({
                 type: GithubUsersActions.GET_USER_REPOS_FAILURE,
-                payload: error,
-            });
-        }
-    };
-
-export const getCommits =
-    (login: string, repo: string) => async (dispatch: AppDispatch) => {
-        dispatch({ type: GithubUsersActions.GET_COMMITS });
-        try {
-            const data = await githubUsersService.getCommits(login, repo);
-            dispatch({
-                type: GithubUsersActions.GET_COMMITS_SUCCESS,
-                payload: data,
-            });
-        } catch (error) {
-            dispatch({
-                type: GithubUsersActions.GET_COMMITS_FAILURE,
                 payload: error,
             });
         }

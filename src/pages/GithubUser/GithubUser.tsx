@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch } from "../../app/hooks";
 import {
+    clearUserState,
     getUserByLoginName,
     getUsersRepos,
 } from "./../../store/action-creators/githubUsers.actions";
@@ -19,6 +20,10 @@ const GithubUser: React.FC = () => {
             dispatch(getUserByLoginName(login));
             dispatch(getUsersRepos(login));
         }
+
+        return () => {
+            dispatch(clearUserState());
+        };
     }, [login]);
 
     return (

@@ -4,10 +4,14 @@ import { Repository } from "../../models/repo.model";
 import { UserDetails, UserSearchResponse } from "../../models/user.model";
 import { GithubUsersActions } from "../action-creators/githubUsers.actions";
 
+export interface ReposWithCommits extends Repository {
+    commits: Commit[];
+}
+
 interface State {
     users: UserSearchResponse | null;
     user: UserDetails | null;
-    repos: Repository[];
+    repos: ReposWithCommits[];
     commits: Commit[];
     currentPage: number;
     searchTerm: string;
@@ -97,28 +101,6 @@ export const githubUsersReducer = (
                 error: action.payload,
             };
 
-        case GithubUsersActions.GET_COMMITS:
-            return {
-                ...state,
-                commits: [],
-                loading: true,
-            };
-
-        case GithubUsersActions.GET_COMMITS_SUCCESS:
-            return {
-                ...state,
-                commits: action.payload,
-                loading: false,
-            };
-
-        case GithubUsersActions.GET_COMMITS_FAILURE:
-            return {
-                ...state,
-                loading: false,
-                commits: [],
-                error: action.payload,
-            };
-
         case GithubUsersActions.SET_CURRENT_PAGE:
             return {
                 ...state,
@@ -129,6 +111,14 @@ export const githubUsersReducer = (
             return {
                 ...state,
                 searchTerm: action.payload,
+            };
+
+        case GithubUsersActions.CLEAR_USER_STATE:
+            return {
+                ...state,
+                user: null,
+                repos: [],
+                commits: [],
             };
 
         default:
