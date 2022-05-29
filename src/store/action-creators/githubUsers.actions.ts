@@ -16,23 +16,36 @@ export enum GithubUsersActions {
     GET_COMMITS = "GET_COMMITS",
     GET_COMMITS_SUCCESS = "GET_COMMITS_SUCCESS",
     GET_COMMITS_FAILURE = "GET_COMMITS_FAILURE",
+    SET_CURRENT_PAGE = "SET_CURRENT_PAGE",
+    SET_SEARCH_TERM = "SET_SEARCH_TERM",
 }
 
-export const searchUsers = (query: string) => async (dispatch: AppDispatch) => {
-    dispatch({ type: GithubUsersActions.SEARCH_USERS });
-    try {
-        const data = await githubUsersService.searchUsers(query);
-        dispatch({
-            type: GithubUsersActions.SEARCH_USERS_SUCCESS,
-            payload: data,
-        });
-    } catch (error) {
-        dispatch({
-            type: GithubUsersActions.SEARCH_USERS_FAILURE,
-            payload: error,
-        });
-    }
-};
+export const setCurrentPage = (page: number) => ({
+    type: GithubUsersActions.SET_CURRENT_PAGE,
+    payload: page,
+});
+
+export const setSearchTerm = (searchTerm: string) => ({
+    type: GithubUsersActions.SET_SEARCH_TERM,
+    payload: searchTerm,
+});
+
+export const searchUsers =
+    (query: string, page: number) => async (dispatch: AppDispatch) => {
+        dispatch({ type: GithubUsersActions.SEARCH_USERS });
+        try {
+            const data = await githubUsersService.searchUsers(query, page);
+            dispatch({
+                type: GithubUsersActions.SEARCH_USERS_SUCCESS,
+                payload: data,
+            });
+        } catch (error) {
+            dispatch({
+                type: GithubUsersActions.SEARCH_USERS_FAILURE,
+                payload: error,
+            });
+        }
+    };
 
 export const getUserByLoginName =
     (login: string) => async (dispatch: AppDispatch) => {

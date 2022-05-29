@@ -9,6 +9,8 @@ interface State {
     user: UserDetails | null;
     repos: Repository[];
     commits: Commit[];
+    currentPage: number;
+    searchTerm: string;
     loading: boolean;
     error: string | null;
 }
@@ -18,6 +20,8 @@ const initalValue: State = {
     user: null,
     repos: [],
     commits: [],
+    currentPage: 1,
+    searchTerm: "",
     loading: false,
     error: null,
 };
@@ -113,6 +117,18 @@ export const githubUsersReducer = (
                 loading: false,
                 commits: [],
                 error: action.payload,
+            };
+
+        case GithubUsersActions.SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.payload,
+            };
+
+        case GithubUsersActions.SET_SEARCH_TERM:
+            return {
+                ...state,
+                searchTerm: action.payload,
             };
 
         default:

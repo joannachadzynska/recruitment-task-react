@@ -20,12 +20,13 @@ export class GithubUserService {
     }
 
     public async searchUsers(
-        query: string
+        query: string,
+        page: number = 1
     ): Promise<UserSearchResponse[] | []> {
         try {
             const response = (
                 await this.request.get(
-                    `${config.baseUrl}/search/users?q=${query}+in:login`
+                    `${config.baseUrl}/search/users?q=${query}+in:login&page=${page}`
                 )
             ).data;
             return response;

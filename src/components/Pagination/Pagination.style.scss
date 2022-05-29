@@ -1,0 +1,50 @@
+@use "../../styles/abstracts" as *;
+
+.pagination-container {
+    display: flex;
+    gap: 0.5rem;
+
+    .pagination-item {
+        border: 1px solid $color-secondary-dark;
+        padding: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.dots {
+            &:hover {
+                cursor: default;
+                background-color: transparent;
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+            background-color: $color-neutral-dark;
+        }
+
+        &.selected {
+            background-color: $color-primary;
+            color: $color-neutral;
+            transition: background-color 0.2s ease-in-out;
+
+            &:hover {
+                background-color: $color-primary-light;
+            }
+        }
+
+        &.disabled {
+            pointer-events: none;
+            .arrow path {
+                fill: $color-secondary;
+            }
+        }
+
+        .arrow {
+            width: 30px;
+            path {
+                fill: $color-secondary-dark;
+            }
+        }
+    }
+}

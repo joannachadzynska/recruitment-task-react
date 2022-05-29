@@ -1,6 +1,7 @@
-export { Navigation } from "./Navigation";
-export { Input } from "./Input";
 export { Form } from "./Form";
-export { UsersList } from "./UsersList";
+export { Input } from "./Input";
 export { Loader } from "./Loader";
 export { Modal } from "./Modal";
+export { Navigation } from "./Navigation";
+export { Pagination } from "./Pagination";
+export { UsersList } from "./UsersList";
