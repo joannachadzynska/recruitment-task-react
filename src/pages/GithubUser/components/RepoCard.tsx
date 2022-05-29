@@ -1,5 +1,3 @@
-import { useAppSelector } from "../../../app/hooks";
-import { RootState } from "../../../app/store";
 import { ReposWithCommits } from "../../../store/reducers/githubUsersReducer";
 
 const RepoCard: React.FC<ReposWithCommits> = ({

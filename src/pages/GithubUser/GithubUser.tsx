@@ -24,6 +24,7 @@ const GithubUser: React.FC = () => {
         return () => {
             dispatch(clearUserState());
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [login]);
 
     return (
