@@ -1,6 +1,7 @@
 @use "../../styles/abstracts" as *;
 
 .about-app {
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
     ol li,
     ul li {
         padding-left: 1rem;
@@ -26,7 +27,7 @@
 
 .about-me-btn {
     @include ctaButton;
-    margin: 1rem 0;
+    margin: 0.8rem 0 0 0;
 }
 
 .author {
