@@ -11,6 +11,7 @@ export interface CommitDetails {
     message: string;
     committer: Author;
     comment_count: number;
+    url: string;
 }
 
 export interface Author {

@@ -18,11 +18,16 @@ export enum GithubUsersActions {
     GET_COMMITS_FAILURE = "GET_COMMITS_FAILURE",
     SET_CURRENT_PAGE = "SET_CURRENT_PAGE",
     SET_SEARCH_TERM = "SET_SEARCH_TERM",
+    CLEAR_USER_STATE = "CLEAR_USER_STATE",
 }
 
 export const setCurrentPage = (page: number) => ({
     type: GithubUsersActions.SET_CURRENT_PAGE,
     payload: page,
+});
+
+export const clearUserState = () => ({
+    type: GithubUsersActions.CLEAR_USER_STATE,
 });
 
 export const setSearchTerm = (searchTerm: string) => ({

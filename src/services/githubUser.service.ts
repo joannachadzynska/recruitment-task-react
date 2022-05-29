@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from "axios";
 import { config } from "../config/config";
 import { Commit } from "../models/commit.model";
 import { Repository } from "../models/repo.model";
-import { User, UserDetails, UserSearchResponse } from "../models/user.model";
+import { UserDetails, UserSearchResponse } from "../models/user.model";
 
 export class GithubUserService {
     private readonly request: AxiosInstance;
@@ -65,9 +65,7 @@ export class GithubUserService {
     ): Promise<Commit[] | []> {
         try {
             const response = (
-                await this.request.get(
-                    `/repos/${login}/${repo}/commits?per_page=5`
-                )
+                await this.request.get(`/repos/${login}/${repo}/commits`)
             ).data;
             return response;
         } catch (error) {

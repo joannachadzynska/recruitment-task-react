@@ -9,6 +9,7 @@ const UsersList: React.FC = () => {
     return (
         <ul className='users-list'>
             {!!users &&
+                users.items.length > 0 &&
                 users.items.map((user) => (
                     <UsersListItem key={user.id} {...user} />
                 ))}
